@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/Signin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="main-logo">
+        <a href="#" class="logo">Job <span>Portal</span></a>
+    </div>
+    <div class="signin-page">
+        <h1> Signup </h1>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <p style="color: red; text-align: center;">{{msg}}</p>
+            <div class="candidate-select">
+                <label for="">Select Role  <sup style="color: red;">*</sup></label>
+                <br>
+                <select name="role" id="candidate_select" name="" id="">
+                    <option >=======Select Role======</option>
+                    <option value="Candidate">Candidate</option>
+                    <option value="Campany">Campany</option>
+                </select>
+            </div>
+            <br>
+            <div class="names">
+                <div class="first-name">
+                    <label for="">First name  <sup style="color: red;">*</sup> </label>
+                    <input class="name_box" type="text" name="firstname" placeholder="First Name">
+                </div>
+                <br>
+                <div class="last-name">
+                    <label for="">Last name  <sup style="color: red;">*</sup> </label>
+                    <input class="name_box" type="text" name="lastname" placeholder="Last Name">
+                </div>
+            </div>
+            <br>
+            <div class="email">
+                <label for="">Email  <sup style="color: red;">*</sup> </label>
+                <input class="input_box" type="text" name="email" placeholder="Email">
+            </div>
+            <br>
+            <div class="password">
+                <label for="">Password  <sup style="color: red;">*</sup> </label>
+                <input class="input_box" type="password" name="password" placeholder="Password">
+            </div>
+            <br>
+            <div class="cpassword">
+                <label for="">Confirm Password  <sup style="color: red;">*</sup> </label>
+                <input class="input_box" type="password" name="cpassword" placeholder="Confirm Password">
+            </div>
+            <br>
+            <div class="check-box">
+                <input type="checkbox" name="" id="">
+                <label for="">I Accept <span class="terms">Terms and Condition</span></label>
+            </div>
+            <br>
+
+            <button type="submit" id="register" style="background-color: #04AA6D;" value="Register">Register</button>
+            <br>
+            <div class="AlreadyHaveAcc">
+                <a href="{% url 'login' %}" id="AlreadyHaveAcc">Do u already have an account?</a>
+            </div>
+
+            <div class="other-sigin-options">
+                <p>Or Signup With</p>
+                <div class="social-medias">
+                    <a href=""><i id="fb" class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i id="g" class="fa-brands fa-google-plus-g"></i></a>
+                    <a href=""><i id="g" class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+    </div>
+    </form>
+    </div>
+</body>
+
+</html>

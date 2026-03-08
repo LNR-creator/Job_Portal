@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/Otp.css' %}">
+</head>
+<body>
+    <div class="logo">
+        <a href="#" class="logo">Job <span>Portal</span></a>
+    </div>
+    <div class="otp-page">
+        <h1>OTP Verification Page</h1>
+        <br>
+        <form action="{% url 'otp' %}" method="post">
+            {% csrf_token %}
+        <div class="otp-form">
+            <label for="">Your Email <sup style="color: red;">*</sup></label>
+            <br><br>
+            <input class="sub-btn" type="text" name="email" value="{{email}}" readonly>
+            <br><br>
+        
+            <label for="">Your OTP <sup style="color: red;">*</sup></label>
+            <br><br>
+            <input class="sub-btn" type="text" placeholder="Enter your otp" name="otp">
+            <br>
+        
+        <br><br>
+        <input class="submit-btn" type="submit" style="background-color: #04AA6D;" value="submit">
+        </div>
+        </form>
+    </div>
+</body>
+</html>

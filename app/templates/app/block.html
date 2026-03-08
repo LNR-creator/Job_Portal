@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}JobPortal{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   
+</head>
+    
+
+<body>
+    
+    <nav>
+        <div class="nav-sec-row">
+              <a href="{% url 'home' %}" class="logo">Job <span>Portal</span></a>
+            <div class="nav-link">
+            <ul>
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="">JOBS</a></li>
+                <li><a href="">PAGES</a></li>
+                <li><a href="">CONTACT</a></li>
+                <li class="user-dropdown" >
+                    <a style="font-weight: 700;" href=> {{request.session.firstname}} {{request.session.lastname}}</a>
+                    <ul class="user-drop">
+                        <li><a class="user-drop-item" href="{% url 'profile' pk=request.session.id %}">Profile</a></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+
+            <!-- <button type="button" id="job-btn"><i class="fa-solid fa-cloud-arrow-up"></i> Post a Job</button> -->
+
+        </div>
+    </nav>
+{% block body %}
+{% endblock %}
+
+</body>
+
+</html>
