@@ -1,0 +1,54 @@
+    {% extends 'app/block.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+    
+{% block body %}
+
+<body class="bg-light py-4">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">
+            My Job Application
+        </h2>
+        <div class="card shadow">
+            <div class="card-body">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Date Applied</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for app in applications %}
+
+                        <tr>
+                            <td>{{ app.job.job_title }}</td>
+                            <td>{{ app.job.location }}</td>
+                            <td>
+                                <span class="badge bg-warning text-dark">
+                                    {{ app.status }}
+                                </span>
+                            </td>
+
+                            <td>
+                                {{app.applied_date}}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
+</html>

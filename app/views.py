@@ -67,7 +67,7 @@ def LoginUser(request):
     if request.method == "GET":
         return render(request,"app/LoginPage.html")
 
-    if request.POST.get('role','') == "Candidate":
+    if request.POST.get('role','') == "Candidate" or request.POST.get('role','') == "Company":
         email = request.POST.get('email','')
         password = request.POST.get('password','')
         try:
@@ -83,6 +83,14 @@ def LoginUser(request):
             request.session['id'] = user.id
             request.session['role'] = user.role
             request.session['firstname']= can.firstname
+            request.session['lastname'] = can.lastname
+            request.session['email'] = user.email
+            return redirect('home')
+        elif user.password == password and user.role == "Company":
+            can = Company.objects.get(user_id = user)
+            request.session['id'] = user.id
+            request.session['role'] =user.role
+            request.session['firstname'] = can.firstname
             request.session['lastname'] = can.lastname
             request.session['email'] = user.email
             return redirect('home')
@@ -133,3 +141,55 @@ def UpdateProfile(request,pk):
         can.save()
         url = f'/profile/{pk}'
     return redirect(url)
+
+
+def post_job(request):
+    if request.method == "POST":
+        title = request.POST['title']
+        description = request.POST['description']
+        location = request.POST['location']
+        salary = request.POST['salary']
+
+        company = Company.objects.first()
+
+        Job.objects.create(
+            company = company,
+            job_title = title,
+            job_description = description,
+            location = location,
+            salary = salary
+        )
+        return redirect('home')
+    return render(request,"app/post_job.html")
+
+
+def job_list(request):
+    jobs = Job.objects.all()
+    return render(request,"app/Jobs.html",{"jobs":jobs})
+
+def apply_job(request,pk):
+    job = Job.objects.get(id=pk)
+    candidate = Candidate.objects.first()
+
+    Application.objects.create(
+        job=job,
+        candidate=candidate
+    )
+
+    return redirect("jobs")
+
+
+# dashboard
+
+def dashboard(request):
+    user_id = request.session.get("id")
+    if not user_id:
+        return redirect('login')
+    candidate = Candidate.objects.get(user_id=user_id)
+    applications = Application.objects.filter(candidate=candidate)
+    return render(request,"app/dashboard.html",{"applications":applications})
+
+def logout(request):
+    request.session.flush()
+    return redirect('login')
+

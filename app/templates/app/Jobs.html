@@ -1,0 +1,31 @@
+{% extends 'app/block.html' %}
+{% block body %}
+<div class="heading">
+<center><h1>Available Jobs</h1></center>
+</div>
+
+
+<div class="row">
+    {% for job in jobs %}
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ job.job_title }}</h5>
+        <p class="card-text">{{ job.job_description }}</p>
+        <p class="card-text"><b>Location : </b>{{ job.location }}</p>
+          <p class="card-text"><b>Salary : </b>{{ job.salary }}</p>
+        <a href="#" class="btn btn-primary">Apply Now</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+{% empty %}
+<p>No jobs available</p>
+{% endfor %}
+
+
+
+{% endblock %}
