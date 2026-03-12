@@ -210,3 +210,22 @@ textarea {
 .cards-box{
     margin-top: 100px;
 }
+
+/* .all_job_cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.jobs_cards{
+    border: none;
+    box-shadow: 2px 2px 2px 2px #ededed;
+}
+
+footer{
+    padding: 8px;
+    height: 50px;
+    background: #000;
+    color: white;
+    text-align: center;
+}

@@ -168,8 +168,10 @@ def job_list(request):
     return render(request,"app/Jobs.html",{"jobs":jobs})
 
 def apply_job(request,pk):
+    user_id = request.session['id']
     job = Job.objects.get(id=pk)
-    candidate = Candidate.objects.first()
+    
+    candidate = Candidate.objects.get(user_id = user_id)
 
     Application.objects.create(
         job=job,
