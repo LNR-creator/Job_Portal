@@ -1,0 +1,86 @@
+* {
+    padding: 0px;
+}
+
+
+/* Profile page */
+
+
+label {
+    font-weight: 600;
+    font-size: 16px;
+    color: #6c757d;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+
+
+.label {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-inp {
+    width: 250px;
+    height: 35px;
+}
+
+.select {
+    width: 260px;
+    background: #fff;
+    height: 40px;
+    border: 1px solid rgb(78, 75, 75);
+}
+
+.job-description {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 550px;
+    height: 300px;
+    resize: none;
+}
+
+#post {
+    width: 100px;
+    height: 40px;
+}
+
+.file-upload {
+    width: 350px;
+}
+
+.file-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #cfcfcf;
+    border-radius: 6px;
+    padding: 8px 10px;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+.file-text {
+    color: #555;
+}
+
+.browse-btn {
+    background-color: #e6e6e6;
+    padding: 6px 14px;
+    border-radius: 4px;
+    color: #333;
+    font-weight: 500;
+}

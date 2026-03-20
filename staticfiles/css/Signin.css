@@ -1,0 +1,124 @@
+   @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+
+
+   h1 {
+       text-align: center;
+   }
+   .candidate-select{
+    display: flex;
+    flex-direction: column;
+   }
+
+   .signin-page {
+       /* display: flex;
+       flex-direction: column; */
+       background: whitesmoke;
+       width: 500px;
+       /* padding: 1% 2% 2%; */
+       align-items: center;
+       margin: auto;
+       color: black;
+       padding: 10px;
+       border-radius: 7px;
+        border: 4px solid #04AA6D; 
+   }
+
+   .logo {
+       font-size: 33px;
+       font-weight: 600;
+
+   }
+
+   .main-logo{
+    text-align: center;
+   }
+
+   a {
+       text-decoration: none;
+   }
+
+   .logo span {
+       color: red;
+   }
+
+   .names {
+       display: flex;
+       padding: 0px;
+       margin: 10px;
+
+   }
+
+   .first-name {
+       margin-right: 0px;
+   }
+
+   .email {
+       display: flex;
+       flex-direction: column;
+     
+   }
+
+   .password {
+       display: flex;
+       flex-direction: column;
+      
+   }
+
+   .cpassword {
+       display: flex;
+       flex-direction: column;
+      
+   }
+
+   .check-box {
+       
+   }
+
+   .input_box {
+       height: 30px;
+       border-radius: 7px;
+   }
+
+   .name_box {
+       height: 30px;
+       border-radius: 7px;
+   }
+
+   .terms {
+       color: blue;
+       cursor: pointer;
+   }
+
+   #register {
+       width: 500px;
+       height: 30px;
+      
+   }
+
+   .AlreadyHaveAcc {
+       margin-top: 10px;
+       text-align: center;
+   }
+
+   #fb {
+       font-size: 45px;
+   }
+
+   #g {
+       font-size: 45px;
+   }
+
+   .social-medias {
+       display: flex;
+       gap: 20px;
+   }
+
+   .other-sigin-options {
+       text-align: center;
+   }
+
+   .social-medias {
+       padding-left: 140px;
+   }
+ 

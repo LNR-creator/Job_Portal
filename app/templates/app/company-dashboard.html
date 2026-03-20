@@ -1,0 +1,62 @@
+{% extends 'app/block.html' %}
+
+{% block body %}
+
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+        <div>
+          
+            <h1 class="mb-1 text-center text-md-start">Company Dashboard</h1>
+            <p class="mb-0">Welcome {{ company.firstname }} {{ company.lastname }}</p>
+        </div>
+        <a href="{% url 'post-job' %}" class="btn btn-success">Post New Job</a>
+    </div>
+
+
+<h1 style="text-align: center;font-family: 'Times New Roman', Times, serif;">Jobs Posted</h1>
+<div class="table-responsive">
+<table class="table toable-bordered table-striped table-hover table-white">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Job</th>
+      <th scope="col">Location</th>
+      <th scope="col">Salary</th>
+      <!-- <th scope="col">Skills</th> -->
+      <th scope="col">Deadline</th>
+       <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for job in jobs %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ job.job_title }}</td>
+      <td>{{ job.location }}</td>
+        <td>{{ job.salary }}</td>
+      <!-- <td>{{ job.requirements }}</td> -->
+      <td>{{ job.deadline }}</td>
+      <td><button class="btn btn-success btn-sm " type="button"><a class="text-white" href="{% url 'edit-job' job.id %}">Edit</a></button></td>
+      <td>
+        <form action="{% url 'delete-job' job.id %} " method="POST">
+          {% csrf_token %}
+
+          <button  class="btn btn-warning btn-sm" type="submit">Delete</button>
+        </form>
+      </td>
+      <td><a href="#" class="btn btn-info btn-sm">View Applicants</a></td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="9" style="text-align: center;">No jobs yet posted</td>
+    </tr>
+ {% endfor %}
+
+  </tbody>
+</table>
+</div>
+    </div>
+</div>
+
+{% endblock %}

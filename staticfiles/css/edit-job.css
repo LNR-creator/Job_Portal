@@ -1,0 +1,13 @@
+.edit-job form{
+  display: flex;
+  align-content: center;
+  justify-content: center; 
+}
+
+.edit-job .box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    
+}

@@ -1,0 +1,47 @@
+.logo {
+    font-size: 33px;
+    font-weight: 600;
+    
+}
+
+.logo span {
+    color: red;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    min-height: 100vh;  
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+h1{
+    margin: 20px 0 10px 70px;
+}
+.otp-page{
+    width: 450px;
+    height: 350px;
+    background: whitesmoke;
+    border-radius: 7px;
+    border: 4px solid #04AA6D; 
+}
+.otp-form{
+    margin-left: 70px ;
+}
+.submit-btn{
+    width: 300px;
+    height: 30px;
+}
+
+.sub-btn{
+    width: 300px;
+    height: 30px;
+   
+}

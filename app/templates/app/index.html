@@ -1,32 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% extends 'app/block.html' %}
+<html>   {% extends 'app/block.html' %}
 {% load static %}
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Site{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
-    <style>
-        footer{
-           color: aliceblue;
-            background-color: #000;
-        }
-    </style>
-</head>
-
-<body>
     
 {% block body %}
+<body>
+<main>
+   <div class="poster">
+    <div class="poster-txt">
+      <h1>FIND YOUR CAREER OPPORTUNITY</h1>
+      <P>Search over 10000 top local jobs in Hyderabad.</P>
+      <p>Simplify your job search with a few clicks</p>
+      <div class="poster-btns">
+        <button style="padding: 10px; background-color: blue;"><a style="color: white;" href="{% url 'jobs' %}">Find Jobs now</a></button>
+       <button style="padding: 10px; background-color: orange;"><a style="color: white;" href="">Explore Categories</a></button>
+      </div>
+    </div>
+    <div class="poster-img">
+      <img id="po-img" src="{% static 'Poster.png' %}" alt="" srcset="">
+    </div>
+   </div>
+</main>
+<br><br>
+<div class="search-btn-part">
+
+  <form action="{% url 'jobs' %}" method="GET">
+    <input id="search" type="search" name="q" placeholder="search for jobs....">
+    <button id="search-btn" type="submit">Search</button>
+  </form>
+
+</div>
 <footer>
    &copy;all copy rights are reserved
 </footer>
-{% endblock %}
-
 </body>
-
 </html>
+{% endblock %}

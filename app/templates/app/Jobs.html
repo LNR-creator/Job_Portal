@@ -5,27 +5,50 @@
 </div>
 
 
-<div class="row justify-content-center ">
+<div class="row justify-content-center p-4">
     {% for job in jobs %}
-  <div class="col-md-6 mb-4 jobs_cards">
+  <div class="col-md-5 mb-3 jobs_cards">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{ job.job_title }}</h5>
         <p class="card-text">{{ job.job_description }}</p>
+        <p class="card-text"><b>Requirements:</b>{{job.requirements}}</p>
         <p class="card-text"><b>Location : </b>{{ job.location }}</p>
           <p class="card-text"><b>Salary : </b>{{ job.salary }}</p>
-        <a href="#" class="btn btn-primary">Apply Now</a>
+          <p class="card-text"><b>Deadline : </b> {{job.deadline}}</p>
+        {% if request.session.id %}
+
+            {% if request.session.role == "Candidate" %}
+                {% if job.id in applied_jobs %}
+                    <a class="btn btn-success">Applied</a>
+                {% else %}
+                    <a href="{% url 'apply' job.id %}" class="btn btn-primary">Apply Now</a>
+                {% endif %}
+
+            {% elif request.session.role == "Company" %}
+                <a onclick="alert('Only candidates can apply for the jobs');" class="btn btn-primary">
+                    Apply Now
+                </a>
+
+            {% endif %}
+
+        {% else %}
+            <a href="{% url 'login' %}" onclick="alert('Please login to apply for the jobs');" class="btn btn-primary">
+                Apply Now
+            </a>
+        {% endif %}
       </div>
     </div>
   </div>
-
-
-
 
 {% empty %}
 <p>No jobs available</p>
 {% endfor %}
 
 </div>
+
+<footer>
+   &copy;all copy rights are reserved
+</footer>
 
 {% endblock %}

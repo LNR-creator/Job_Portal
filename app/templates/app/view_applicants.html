@@ -1,0 +1,36 @@
+{% extends 'app/block.html' %}
+
+{% block body %}
+<h1 style="text-align: center;">View Applicants</h1>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <th scope="col">#</th>
+        <th scope="col">Applicants</th>
+        <th scope="col">Role</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Approve</th>
+        <th scope="col">Reject</th>
+      </thead>
+<tbody>
+    <tr>
+        <th scope="row"></th>
+        <td>Raju</td>
+        <td>Full stack</td>
+        <td>10LPA</td>
+        <td>
+            <form action="" method="post">
+                <button class="btn  btn-success btn-sm" type="submit">Approve</button>
+            </form>
+        </td>
+        <td>
+            <form action="" method="post">
+                <button class="btn btn-warning btn-sm" type="submit">Reject</button>
+            </form>
+        </td>
+    </tr>
+</tbody>
+    </table>
+</div>
+{% endblock %}

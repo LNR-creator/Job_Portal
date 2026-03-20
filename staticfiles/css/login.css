@@ -1,0 +1,71 @@
+   .login-page{
+    padding-top: 10px;
+      
+      background: whitesmoke;
+      width: 350px;
+      height: 500px;
+      border-radius: 7px;
+      border: 4px solid #04AA6D; 
+      
+   }
+
+   .login-btn{
+    width: 250px;
+    height: 30px;
+    /* font-size: 20px; */
+    margin-left: 40px;
+    border-radius: 7px;
+    border: 2px solid rgb(211, 208, 208);
+   }
+
+  .email{
+    margin-left: 40px;
+  }
+
+   .input_box {
+       height: 30px;
+       width: 250px;
+       border-radius: 7px;
+       border: 1px solid rgb(89, 87, 87);
+   }
+
+
+   .logo {
+       font-size: 33px;
+       font-weight: 600;
+
+   }
+
+   .main-logo{
+    text-align: center;
+   }
+
+   a {
+       text-decoration: none;
+   }
+
+   .logo span {
+       color: red;
+   }
+   .password{
+    margin-left: 40px;
+   }
+
+   body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 100px;
+   }
+
+   .candidate-select{
+    padding-left: 40px;
+   }
+
+   .login-extra{
+    padding-left: 30px;
+    display: flex;
+    gap: 30px;
+   }

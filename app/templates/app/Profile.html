@@ -8,6 +8,7 @@
         {% csrf_token %}
         <div class="profile-update">
             <h2>Update your Profile</h2>
+            {% if request.session.role == "Candidate" %}
             <div class="box">       
             <div class="label">
                 <label for="">Firstname</label>
@@ -22,10 +23,10 @@
         <div class="box">
             <div class="label">
                 <label for="">Job Type</label>
-                <select name="type" class="select" id="">
+                <select name="shift" class="select" id="">
                     <option value="">Category</option>
-                    <option value="Candidate">Candidate</option>
-                    <option value="Company">Company</option>
+                    <option value="Morning Shift">Morning shift</option>
+                    <option value="Evening Shift">Evening Shift</option>
                 </select>
             </div>
             <div class="label">
@@ -120,6 +121,66 @@
                 </label>
             </div>
         </div>
+
+        {% elif request.session.role == "Company" %}
+        <div class="box">
+            <div class="label">
+                <label for="">Firstname</label>
+                <input type="text" class="name-inp" name="fname" value="{{company.firstname}}">
+            </div>
+
+            <div class="label">
+                <label for="">Lastname</label>
+                <input type="text" class="name-inp" name="lname" value="{{company.lastname}}">
+            </div>
+        </div>
+
+        <br><br>
+             <div class="box">
+            <div class="label">
+                <label for="">CompanyName</label>
+                <input type="text" class="name-inp" name="companyname" value="{{company.company_name}}">
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="box">
+            <div class="label">
+                <label for="">City</label>
+                <input type="text" class="name-inp" name="city" value="{{company.city}}">
+            </div>
+
+            <div class="label">
+                <label for="">Contact</label>
+                <input type="number" class="name-inp" name="contact" value="{{company.contact}}">
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="box">
+            <div class="label">
+                <label for="">Address</label>
+                <input type="text" class="name-inp" name="address" value="{{company.address}}">
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="box">
+            <div class="file-upload">
+                <input type="file" id="fileInput" name="logo_pic" hidden>
+
+                <label for="fileInput" class="file-label">
+                    <span class="file-text">
+                        ☁ Upload Company Logo
+                    </span>
+                    <span class="browse-btn">Browse</span>
+                </label>
+            </div>
+        </div>
+        {% endif %}
 
         <br>
         <div class="post-btn">

@@ -1,18 +1,53 @@
-<h2>Post a Job</h2>
 
+
+{% extends 'app/block.html' %}
+
+{% block body %}
+<body>
+<h2 style="text-align: center;">Post a Job</h2>
+<div class="post-job-box">
+<div class="post-job">
 <form action="" method="POST">
 {% csrf_token %}
+
+<div class="post-job-attributes">
     <label>Job Title</label>
     <input type="text" name="title">
+</div>
 
-    <label>Description</label>
-    <textarea name="description"></textarea>
+<div class="post-job-attributes">
+    <label>Requirements</label>
+    <input type="text" name="requirements">
+</div>
 
+<div class="post-job-attributes">
+    <label>Deadline for applying</label>
+    <input type="date" name="deadline">
+</div>
+
+<div class="post-job-attributes">
     <label>Location</label>
     <input type="text" name="location">
+</div>
 
+<div class="post-job-attributes">
     <label>Salary</label>
     <input type="text" name="salary">
+</div>
 
-    <button type="submit">Post a Job</button>
+<div class="post-job-attributes">
+    <label>Description</label>
+    <textarea name="description"></textarea>
+</div>
+
+    <button id="post-job-btn" type="submit">Post a Job</button>
 </form>
+</div>
+</div>
+
+<footer>
+   &copy;all copy rights are reserved
+</footer>
+</body>
+
+{% endblock %}

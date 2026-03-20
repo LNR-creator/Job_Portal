@@ -1,0 +1,47 @@
+{% extends 'app/block.html' %}
+{% block body %}
+<div class="edit-job">
+    <center>
+        <h2>Edit Jobs</h2>
+        <br><br>
+    </center>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="edit-job-items">
+            <div class="box">
+                <label >Job Title</label>
+                <input type="text" name="job_title" value="{{ job.job_title }}">
+            </div>
+            <br>
+            <div class="box">
+                <label >Job description</label>
+                <textarea name="job_description" id="">{{ job.job_description }}</textarea>
+            </div>
+            <br>
+            <div class="box">
+                <label>Job Requirements</label>
+                <input type="text" name="job_requirements" value="{{ job.requirements  }}">
+            </div>
+            <br>
+            <div class="box">
+                <label>Job Location</label>
+                <input type="text" name="job_location" value="{{ job.location }}">
+            </div>
+            <br>
+            <div class="box">
+                <label>Job Salary</label>
+                <input type="text" name="salary" value="{{ job.salary }}">
+            </div>
+            <br>
+            <div class="box">
+                <label style="color: red;">Deadline</label>
+                <input type="date" name="deadline" value="{{ job.deadline|date:'Y-m-d' }} " required>
+            </div>
+            <br><br>
+            <div class="update-job-btn">
+            <button type="submit" style="padding: 10px;">Update Job</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

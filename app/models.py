@@ -49,8 +49,10 @@ class Job(models.Model):
     job_title = models.CharField(max_length=200)
     job_description = models.TextField()
     location = models.CharField(max_length=100)
-    salary = models.IntegerField(null=True,blank=True)
+    salary = models.CharField(max_length=20,null=True,blank=True)
     created_at = models.DateField(auto_now_add=True)
+    requirements = models.TextField(null=True,blank=True)
+    deadline = models.DateField(null=True,blank=True)
 
     def __str__(self):
         return self.job_title
