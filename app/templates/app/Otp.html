@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="{% static 'css/Otp.css' %}">
 </head>
 <body>
+    <p style="text-align: center;">Your OTP is {{otp}}</p>
     <div class="logo">
         <a href="#" class="logo">Job <span>Portal</span></a>
     </div>
     <div class="otp-page">
+        
         <h1>OTP Verification Page</h1>
         <br>
         <form action="{% url 'otp' %}" method="post">

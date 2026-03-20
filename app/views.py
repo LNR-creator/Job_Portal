@@ -80,14 +80,7 @@ def RegisterUser(request):
     otp = randint(100000,999999)
     request.session["otp"] = otp
     request.session["email"]=email
-    
-    send_mail(
-    "Your OTP Code",
-    f"Your OTP is {otp}",
-    settings.EMAIL_HOST_USER,
-    [email],
-    fail_silently=False,
-    )
+
     newuser = UserMaster.objects.create(role=role,otp=otp,email=email,password=password)
 
     if role == "Candidate":
@@ -95,7 +88,7 @@ def RegisterUser(request):
     elif role == "Company":
         Company.objects.create(user_id=newuser,firstname=fname,lastname=lname)
 
-    return render(request,"app/Otp.html",{'email':email})
+    return render(request,"app/Otp.html",{'email':email,'otp':otp})
 
 def LoginUser(request):
 
