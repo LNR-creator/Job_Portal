@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from .models import *
 from random import randint
 from functools import wraps
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 
 # decorators
@@ -76,6 +78,16 @@ def RegisterUser(request):
         return render(request,"app/SignupPage.html",{'msg':"Passwords do not match"})
 
     otp = randint(100000,999999)
+    request.session["otp"] = otp
+    request.session["email"]=email
+    
+    send_mail(
+    "Your OTP Code",
+    f"Your OTP is {otp}",
+    settings.EMAIL_HOST_USER,
+    [email],
+    fail_silently=False,
+    )
     newuser = UserMaster.objects.create(role=role,otp=otp,email=email,password=password)
 
     if role == "Candidate":
