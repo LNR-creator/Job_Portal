@@ -20,5 +20,6 @@ urlpatterns = [
     path("edit-job/<int:pk>",views.edit_job,name="edit-job"),
     path("company-dashboard/",views.company_dashboard,name="company-dashboard"),
     path("delete/<int:pk>",views.delete_job,name="delete-job"),
-    path("applicants",views.ViewApplicants,name="appicants"),
+    path("applicants/<int:pk>/",views.ViewApplicants,name="applicants"),
+    
 ]
