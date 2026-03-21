@@ -1,7 +1,7 @@
 {% extends 'app/block.html' %}
 
 {% block body %}
-<h1 style="text-align: center;">View Applicants</h1>
+<h1 style="text-align: center;">Applicants for {{ job.job_title }}</h1>
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -14,22 +14,52 @@
         <th scope="col">Reject</th>
       </thead>
 <tbody>
+    {% for a in applicants %}
     <tr>
-        <th scope="row"></th>
-        <td>Raju</td>
-        <td>Full stack</td>
-        <td>10LPA</td>
-        <td>
-            <form action="" method="post">
-                <button class="btn  btn-success btn-sm" type="submit">Approve</button>
-            </form>
-        </td>
-        <td>
-            <form action="" method="post">
-                <button class="btn btn-warning btn-sm" type="submit">Reject</button>
-            </form>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ a.candidate.firstname }} {{ a.candidate.lastname }}</td>
+        <td>{{ a.job.job_title }}</td>
+        <td>{{ a.job.salary }}</td>
+
+        
+         {% if a.status == "Pending" %}
+<td>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-success btn-sm" type="submit" name="approve" value="{{ a.id }}">Approve</button>
+    </form>
+</td>
+<td>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-warning btn-sm" type="submit" name="reject" value="{{ a.id }}">Reject</button>
+    </form>
+</td>
+
+{% elif a.status == "Approved" %}
+<td>
+    <button class="btn btn-success btn-sm" disabled>Approved</button>
+</td>
+<td>
+    <button class="btn btn-secondary btn-sm" disabled>-</button>
+</td>
+
+{% elif a.status == "Rejected" %}
+<td>
+    <button class="btn btn-secondary btn-sm" disabled>-</button>
+</td>
+<td>
+    <button class="btn btn-warning btn-sm" disabled>Rejected</button>
+</td>
+{% endif %}
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="7" style="text-align: center;">
+            No applicants yet applied
         </td>
     </tr>
+    {% endfor %}
 </tbody>
     </table>
 </div>
