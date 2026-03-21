@@ -333,5 +333,27 @@ def delete_job(request,pk):
 
 
 
-def ViewApplicants(request):
-    return render(request,'app/view_applicants.html')
+
+
+def ViewApplicants(request,pk):
+    job = Job.objects.get(id=pk)
+    applicants = Application.objects.filter(job=job)
+
+    if request.method == "POST":
+        if "approve" in request.POST:
+            app_id = request.POST.get("approve")
+            application = Application.objects.get(id=app_id)
+            application.status = "Approved"
+            application.save()
+        if "reject" in request.POST:
+            app_id = request.POST.get("reject")
+            application = Application.objects.get(id = app_id)
+            application.status = "Rejected"
+            application.save()
+        return redirect('applicants',pk=pk)
+    
+    return render(request,'app/view_applicants.html',
+                  {
+                      "job":job,
+                      "applicants":applicants
+                  })
