@@ -17,34 +17,51 @@
         </h2>
         <div class="card shadow">
             <div class="card-body">
-                <table class="table">
+                <div class="table-responsive">
+                <table class="table table-bordered">
                     <thead class="table-dark">
                         <tr>
+                            <th>#</th>
                             <th>Job Title</th>
+                            <th>Company</th>
                             <th>Location</th>
+                            <th>Salary</th>
                             <th>Status</th>
-                            <th>Date Applied</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for app in applications %}
+                        {% for a in applications %}
 
                         <tr>
-                            <td>{{ app.job.job_title }}</td>
-                            <td>{{ app.job.location }}</td>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ a.job.job_title }}</td>
+                            <td>{{ a.job.company.company_name }}</td>
+                            <td>{{ a.job.location }}</td>
+                            <td>{{ a.job.salary }}</td>
                             <td>
+                                {% if a.status == "Pending" %}
                                 <span class="badge bg-warning text-dark">
-                                    {{ app.status }}
+                                    Pending
                                 </span>
+                                {% elif a.status == "Approved" %}
+                                <span class="badge bg-warning text-dark">
+                                    Approved
+                                </span>
+                                {% elif a.status == "Rejected" %}
+                                <span class="badge bg-warning text-dark">
+                                    Rejected
+                                </span>
+                                {% endif %}
                             </td>
-
-                            <td>
-                                {{app.applied_date}}
-                            </td>
+                        </tr>
+                        {% empty  %}
+                        <tr>
+                            <td colspan="6" style="text-align: center;">No jobs yet applied</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
