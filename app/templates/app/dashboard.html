@@ -1,54 +1,62 @@
-    {% extends 'app/block.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-   
-</head>
-    
+{% extends 'app/block.html' %}
+
 {% block body %}
-
-<body class="bg-light py-4">
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">
-            My Job Application
-        </h2>
-        <div class="card shadow">
-            <div class="card-body">
-                <table class="table">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Job Title</th>
-                            <th>Location</th>
-                            <th>Status</th>
-                            <th>Date Applied</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for app in applications %}
-
-                        <tr>
-                            <td>{{ app.job.job_title }}</td>
-                            <td>{{ app.job.location }}</td>
-                            <td>
-                                <span class="badge bg-warning text-dark">
-                                    {{ app.status }}
-                                </span>
-                            </td>
-
-                            <td>
-                                {{app.applied_date}}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">
+        My Job Application
+    </h2>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Salary</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in applications %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ a.job.job_title }}</td>
+                        <td>{{ a.job.company.company_name }}</td>
+                        <td>{{ a.job.location }}</td>
+                        <td>{{ a.job.salary }}</td>
+                        <td>
+                            {% if a.status == "Pending" %}
+                                <span class="badge bg-warning text-dark">Pending</span>
+                            {% elif a.status == "Approved" %}
+                                <span class="badge bg-success">Approved</span>
+                            {% elif a.status == "Rejected" %}
+                                <span class="badge bg-danger">Rejected</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if a.status == "Pending" %}
+                               <form action="{% url 'withdraw-application' a.id %}" onsubmit="return confirm('Are you sure you want to Withdraw the application?');" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Withdraw</button>
+                               </form>
+                            {% else %}
+                                <button class="btn btn-secondary btn-sm" disabled>Cannot Withdraw</button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" style="text-align: center;">No jobs yet applied</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
             </div>
         </div>
     </div>
-</body>
-
+</div>
 {% endblock %}
-</html>
